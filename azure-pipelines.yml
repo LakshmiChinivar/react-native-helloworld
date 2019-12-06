@@ -3,9 +3,6 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- master
-
 pool:
   vmImage: 'macOS 10.13'
 
@@ -37,10 +34,10 @@ steps:
     provisioningProfileLocation: 'secureFiles'
     provProfileSecureFile: 'AppleProvisioningProfile.mobileprovision'
   displayName: 'Install Apple Provisioning Profile'
-
+  
 variables:
   - group: 'React Native Variables'
-
+  
 - script: |
     cd ios
     bundle install
