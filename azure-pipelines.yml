@@ -39,7 +39,7 @@ steps:
   displayName: 'Install Apple Provisioning Profile'
 
 variables:
-  - group: 'React Native Variable'
+  - group: 'React Native Variables'
 
 - script: |
     cd ios
