@@ -5,22 +5,22 @@
 
 pool:
   vmImage: 'macOS 10.13'
-
+  
 steps:
 - task: NodeTool@0
   inputs:
     versionSpec: '9.7.1'
   displayName: 'Install Node'
-
+  
 - script: npm install
   displayName: 'Install dependencies'
-
+  
 - script: npm run lint
   displayName: 'Run lint'
 
 - script: npm run test
   displayName: 'Run unit tests'
-
+  
 - task: InstallAppleCertificate@2
   inputs:
     certSecureFile: AppleDeveloperCertificate.p12
@@ -28,7 +28,7 @@ steps:
     keychain: 'temp'
     deleteCert: true
   displayName: Install Apple Certificate
-
+  
 - task: InstallAppleProvisioningProfile@1
   inputs:
     provisioningProfileLocation: 'secureFiles'
@@ -36,14 +36,14 @@ steps:
   displayName: 'Install Apple Provisioning Profile'
   
 variables:
-  - group: 'React Native Variables'
-  
+    - group: React Native Variables
+
 - script: |
     cd ios
     bundle install
     fastlane build
   displayName: 'Build iOS'
-
+  
 - script: |
     cd android
     bundle install
